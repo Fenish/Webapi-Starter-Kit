@@ -35,3 +35,4 @@ Desktop.ini
 
 Migrations/**
 ./Migrations
+/Migrations/
