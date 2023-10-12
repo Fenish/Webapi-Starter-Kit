@@ -1,6 +1,6 @@
 # Session Authentication
 
-Simple session authentication using Entity Framework Core with Power of [PostgreSql](https://www.postgresql.org/).<br>
+Simple session authentication using [Entity Framework Core](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/8.0.0-rc.2.23480.1) with Power of [PostgreSql](https://www.postgresql.org/).<br>
 Using [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/) package.
 
 ### Note
