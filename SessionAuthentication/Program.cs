@@ -1,5 +1,6 @@
 using dotenv.net;
 using Microsoft.OpenApi.Models;
+using SessionAuthentication.Database;
 using SessionAuthentication.Middlewares;
 
 DotEnv.Load();
@@ -13,6 +14,10 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Session Authentication Api", Version = "v1", Description = "A simple example of ASP.NET Core Web API"});
 });
+
+// Connect Ef Core to Postgres
+// Compare this snippet from Database/DataContext.cs:
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -32,4 +37,5 @@ app.UseHttpsRedirection();
 // Middleware
 app.UseMiddleware<ErrorRoute>();
 
+// Server goes BRRRR
 app.Run();
