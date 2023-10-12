@@ -28,7 +28,12 @@ if (app.Environment.IsDevelopment())
 
 // Simple Routes
 // Home
-app.MapGet("/", () => new { message = "Welcome to Session Authentication Api" });
+app.MapGet("/", () => new
+{
+    project = "Webapi Starter Kit",
+    subproject = "Session Authentication",
+    repository = "https://github.com/Fenish/Webapi-Starter-Kit"
+});
 
 app.UseRouting();
 app.MapControllers();
