@@ -6,21 +6,54 @@ using SessionAuthentication.Utils;
 namespace SessionAuthentication.Controllers;
 
 
+public class RegistrationRequest
+{
+    public required string Username { get; set; }
+    public required string Password { get; set; }
+    public required string Email { get; set; }
+}
+
+public class LoginRequest
+{
+    public required string Identifier { get; set; }
+    public required string Password { get; set; }
+}
+
 [ApiController]
 [Route("[controller]")]
 public class Authentication(DataContext context) : ControllerBase
 {
-    public class RegistrationRequest
-    {
-        public required string Username { get; set; }
-        public required string Password { get; set; }
-        public required string Email { get; set; }
-    }
-    
     [HttpPost("/login")]
-    public ActionResult Login()
+    public ActionResult Login([FromBody] LoginRequest request)
     {
-        return Ok("test");
+        var identifier = request.Identifier;
+        var hashedPassword = StringUtils.Sha256Encrypt(request.Password);
+        
+        // Check if user exists
+        var user = context.Users.FirstOrDefault(user => user.Username == identifier || user.Email == identifier);
+        
+        // If user does not exist, return 400 Bad Request
+        if (user == null)
+        {
+            return BadRequest(new { message = "User does not exist" });
+        }
+        
+        // Check if password is correct
+        if (user.Password != hashedPassword)
+        {
+            return BadRequest(new { message = "Password is incorrect" });
+        }
+        
+        // Create new session
+        var session = new Session();
+        var tokenData = session.CreateSession(user.Username);
+        
+        // Return session token
+        return Ok(new
+        {
+            tokenData.AccessToken,
+            tokenData.RefreshToken
+        });
     }  
     
     [HttpPost("/register")]
