@@ -21,7 +21,7 @@ public class LoginRequest
 
 [ApiController]
 [Route("[controller]")]
-public class Authentication(DataContext context) : ControllerBase
+public class Authentication(DatabaseContext context) : ControllerBase
 {
     [HttpPost("/login")]
     public ActionResult Login([FromBody] LoginRequest request)

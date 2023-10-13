@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Connect Ef Core to Postgres
 // Compare this snippet from Database/DataContext.cs:
-builder.Services.AddDbContext<DataContext>();
+builder.Services.AddDbContext<DatabaseContext>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
