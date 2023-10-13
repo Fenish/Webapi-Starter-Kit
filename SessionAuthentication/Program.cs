@@ -4,7 +4,7 @@ using SessionAuthentication.Database;
 using SessionAuthentication.Middlewares;
 
 DotEnv.Load();
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateSlimBuilder(args);
 string port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 
 builder.WebHost.UseUrls($"http://*:{port}");
