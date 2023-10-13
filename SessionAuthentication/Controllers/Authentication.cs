@@ -47,6 +47,21 @@ public class Authentication(DatabaseContext context) : ControllerBase
         // Create new session
         var tokenData = Session.CreateSession(user.Username);
         
+        // Set cookies for the client
+        Response.Cookies.Append("accessToken", tokenData.AccessToken, new CookieOptions
+        {
+            HttpOnly = true, // Makes the cookie inaccessible from client-side scripts
+            Secure = true, // Sends the cookie over HTTPS only
+            SameSite = SameSiteMode.Strict, // Helps prevent cross-site request forgery (CSRF) attacks
+        });
+
+        Response.Cookies.Append("refreshToken", tokenData.RefreshToken, new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,
+            SameSite = SameSiteMode.Strict,
+        });
+        
         // Return session token
         return Ok(new
         {
