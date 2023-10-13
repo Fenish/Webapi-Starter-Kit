@@ -37,3 +37,8 @@ Migrations/**
 ./Migrations
 /Migrations/
 Migrations/
+
+.idea/
+.idea/**
+/.idea/
+/.idea/**
