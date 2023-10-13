@@ -9,10 +9,20 @@ namespace SessionAuthentication.Controllers;
 [Route("[controller]")]
 public class UserController(DatabaseContext context) : ControllerBase
 {
-    [HttpGet("/users/@me")]
-    public ActionResult Login(string token)
+    private static Dictionary<string, string> ProcessCookies(string cookies)
     {
-        var accessToken = token;
+        var cookiePairs = cookies.Split("; ");
+        return cookiePairs.Select(cookiePair => cookiePair.Split("=")).ToDictionary(cookie => cookie[0], cookie => cookie[1]);
+    }
+    
+    [HttpGet("/users/@me")]
+    public ActionResult GetAuthenticatedUser()
+    {   
+        // Check if access token is provided
+        if (!Request.Cookies.TryGetValue("accessToken", out var accessToken))
+        {
+            return BadRequest(new { message = "Access token is not provided" });
+        }
         
         // Check if session exists
         if (!Session.SessionExists(accessToken))
