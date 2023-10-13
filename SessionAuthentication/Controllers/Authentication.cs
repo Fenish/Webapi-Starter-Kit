@@ -45,8 +45,7 @@ public class Authentication(DatabaseContext context) : ControllerBase
         }
         
         // Create new session
-        var session = new Session();
-        var tokenData = session.CreateSession(user.Username);
+        var tokenData = Session.CreateSession(user.Username);
         
         // Return session token
         return Ok(new
