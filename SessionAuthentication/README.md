@@ -3,11 +3,6 @@
 Simple session authentication using [Entity Framework Core](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/8.0.0-rc.2.23480.1) with Power of [PostgreSql](https://www.postgresql.org/).<br>
 Using [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/) package.
 
-### Note
-
-I used .NET 8 in this project. You can build to machine code using [dotnet publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21) command.<br>
-After you build your project, you can run it on any machine without .NET installed.
-
 ### How to use
 
 1. Clone this repository
@@ -20,3 +15,8 @@ After you build your project, you can run it on any machine without .NET install
 3. Go to `bin/Release/netcoreapp3.1/{RID}/publish/`
 4. Copy .env.example to .env and fill it  
 5. Open your browser and go to `localhost:<PORT>` (default port is 5000)
+
+### Details
+
+* ### Endpoint list <br>
+  ![](https://i.imgur.com/Z822MwO.png)
