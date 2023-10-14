@@ -42,3 +42,5 @@ Migrations/
 .idea/**
 /.idea/
 /.idea/**
+
+appsettings.Development.json
