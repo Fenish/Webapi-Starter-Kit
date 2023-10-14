@@ -13,7 +13,7 @@ Using [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npg
    * Mac: `dotnet publish -c Release -r osx-x64`
    * You can find more RIDs [here](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
 3. Go to `bin/Release/netcoreapp3.1/{RID}/publish/`
-4. Copy .env.example to .env and fill it  
+4. Copy .env and fill it  
 5. Open your browser and go to `localhost:<PORT>` (default port is 5000)
 
 ## Detailed explanation
